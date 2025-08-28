@@ -1,0 +1,8 @@
+name: For_each
+run-name: Deploy Infra
+on:
+  push:
+    branches:
+      - main
+      - 'features/*'
+    
