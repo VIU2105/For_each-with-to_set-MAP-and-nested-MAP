@@ -1,0 +1,16 @@
+trigger: none
+pool : ubuntu-latest
+steps:
+  - task: TerraformInstaller@1
+    inputs:
+      terraformVersion: 'latest'
+  - task: TerraformTask@5
+    inputs:
+      provider: 'azurerm'
+      command: 'init'
+      workingDirectory: '$(System.DefaultWorkingDirectory)/for_each'
+      backendAzureRmUseEntraIdForAuthentication: false
+      backendServiceArm: 'new-todo-yaml-pipeline-latest'
+      backendAzureRmStorageAccountName: 'storagesliku22082025'
+      backendAzureRmContainerName: 'tfstate'
+      backendAzureRmKey: 'terraform.tfstate'
