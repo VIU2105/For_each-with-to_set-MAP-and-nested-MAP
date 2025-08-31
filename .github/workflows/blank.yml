@@ -13,6 +13,14 @@ jobs:
       contents: read
     runs-on: self-hosted
     steps:
+      - name: Checkout
+        uses: actions/checkout@v5.0.0
+       #  with:
+       #  # Repository name with owner. For example, actions/checkout
+       #  repository: # optional, default is ${{ github.repository }}
+       # # The branch, tag or SHA to checkout. When checking out the repository that triggered a workflow, this defaults to the reference or SHA for that event.  Otherwise, uses the default branch.
+       #  path: # optional
+      
       - name: Azure Login
         uses: Azure/login@v2.3.0
         with:
