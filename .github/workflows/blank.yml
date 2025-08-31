@@ -5,4 +5,20 @@ on:
     branches:
       - main
       - 'features/*'
-    
+jobs:
+  terraform init and infra:
+    # name: firstjob1
+    permissions:
+      id-token: write
+      contents: read
+    runs-on: self-hosted
+    steps:
+      - name: Azure Login
+          uses: Azure/login@v2.3.0
+          with:
+            client-id: e591c629-ffe4-436a-a606-be198be68948
+            # TenantId of the Azure Service principal created.
+            tenant-id: f646197d-1724-4e4c-9dfb-fefa7f8eb52e
+            # Azure subscriptionId
+            subscription-id: f0c6c28a-7429-42b3-aefa-63439e20a651
+            
