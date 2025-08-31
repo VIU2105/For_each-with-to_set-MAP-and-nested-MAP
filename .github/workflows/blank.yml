@@ -21,4 +21,20 @@ jobs:
           tenant-id: f646197d-1724-4e4c-9dfb-fefa7f8eb52e
           # Azure subscriptionId
           subscription-id: f0c6c28a-7429-42b3-aefa-63439e20a651
-              
+      - name: Terraform Init
+        working-directory: ./for_each
+        id: init
+        run: terraform init -input=false 
+      - name: Terraform fmt
+        # working-directory: ./for_each
+        id: fmt
+        run: terraform fmt -check
+        continue-on-error: true
+      - name: Terraform validate
+        id: validate
+        run: terraform validate -no-color
+        continue-on-error: true
+      - name: Terraform Plan
+        id: Plan
+        run: terraform plan -no-color -input=false
+        continue-on-error: true
