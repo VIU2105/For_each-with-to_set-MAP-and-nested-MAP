@@ -1,12 +1,12 @@
 
 
 #first scienorio using for each with set of strings and if we are providing the value in map format in .tfvars file
-resource "azurerm_resource_group" "resource_group" {
- for_each = var.rg_name #as it is list not set to convert the the list into set 
- name = "rg_viu"
- location = "East US"
+# resource "azurerm_resource_group" "resource_group" {
+#  for_each = var.rg_name #as it is list not set to convert the the list into set 
+#  name = "rg_viu"
+#  location = "East US"
  #name =each.value## it will take the value from the list and with same error
-}
+# }
 #Error : The given "for_each" argument value is unsuitable: the "for_each" argument must be a map, or set of strings, 
 #and you have provided a value of type tuple
 
@@ -112,8 +112,8 @@ resource "azurerm_resource_group" "resource_group" {
 
 #3 Three MAP sab se jada complex hai  Nested Map (MAP inside MAP then also MAP) - 2D map
 
-# resource "azurerm_resource_group" "resource_group" {
-#     for_each = var.rg_map3
-#     name = each.value.rg_name.name
-#     location = each.value.rg_name.location
-# }
+resource "azurerm_resource_group" "resource_group" {
+    for_each = var.rg_map3
+    name = each.value.rg_name.name
+    location = each.value.rg_name.location
+}
