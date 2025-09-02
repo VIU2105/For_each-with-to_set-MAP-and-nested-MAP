@@ -44,5 +44,5 @@ jobs:
         continue-on-error: true
       - name: Terraform Plan
         id: Plan
-        run: terraform plan -no-color -input=false
+        run: terraform plan
         continue-on-error: true
