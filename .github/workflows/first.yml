@@ -12,6 +12,7 @@ jobs:
       id-token: write
       contents: read
     runs-on: self-hosted
+    # working-directory: for_each
     steps:
       - name: Checkout
         uses: actions/checkout@v5.0.0
@@ -34,15 +35,17 @@ jobs:
         id: init
         run: terraform init -input=false 
       - name: Terraform fmt
-        # working-directory: ./for_each
+        working-directory: ./for_each
         id: fmt
         run: terraform fmt -check
         continue-on-error: true
       - name: Terraform validate
+        working-directory: for_each
         id: validate
         run: terraform validate -no-color
         continue-on-error: true
       - name: Terraform Plan
+        working-directory: for_each
         id: Plan
         run: terraform plan
         continue-on-error: true
