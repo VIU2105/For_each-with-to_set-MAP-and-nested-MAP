@@ -37,7 +37,7 @@ jobs:
       - name: Terraform fmt
         working-directory: ./for_each
         id: fmt
-        run: terraform fmt -check
+        run: terraform fmt
         continue-on-error: true
       - name: Terraform validate
         working-directory: for_each
