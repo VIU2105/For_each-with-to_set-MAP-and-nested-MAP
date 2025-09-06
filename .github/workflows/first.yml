@@ -6,13 +6,15 @@ on:
       - main
       - 'features/*'
 jobs:
-  terraform_init_and_infra:
-    name: firstjob1
+  terraform_init_and_infra: # This is unique indentifier job_id which is string  
+    name: firstjob1    # set a name for the job, which is displayed in the GitHub UI
     permissions:
       id-token: write
       contents: read
     runs-on: self-hosted
-    # working-directory: for_each
+    defaults:  # here we are using the default 
+      run:
+        working-directory: for_each
     steps:
       - name: Checkout
         uses: actions/checkout@v5.0.0
@@ -31,11 +33,11 @@ jobs:
           # Azure subscriptionId
           subscription-id: f0c6c28a-7429-42b3-aefa-63439e20a651
       - name: Terraform Init
-        working-directory: for_each
+        # working-directory: for_each
         id: init
         run: terraform init -input=false 
       - name: Terraform fmt
-        working-directory: ./for_each
+        # working-directory: ./for_each
         id: fmt
         run: terraform fmt
         continue-on-error: true
